@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Photo Sphere Monte Linzone</title>
+
+<!-- for optimal display on high DPI devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core/index.min.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/compass-plugin/index.min.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/gallery-plugin/index.min.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/markers-plugin/index.min.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/settings-plugin/index.min.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/virtual-tour-plugin/index.min.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/map-plugin/index.min.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/plan-plugin/index.min.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1/dist/leaflet.css"/>
+
+<style>
+  html, body {
+  margin: 0;
+  padding: 0;
+  }
+  #viewer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  }
+</style>
+
+</head>
+
+<body>
+
+<!-- the viewer container must have a defined size -->
+<div id="viewer" style="width: 100%; height: 100%; margin: 0;"></div>
+
+<script type="importmap">
+    {
+  "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three/build/three.module.js",
+  "@photo-sphere-viewer/core": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core/index.module.js",
+  "@photo-sphere-viewer/compass-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/compass-plugin/index.module.js",
+  "@photo-sphere-viewer/gallery-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/gallery-plugin/index.module.js",
+  "@photo-sphere-viewer/markers-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/markers-plugin/index.module.js",
+  "@photo-sphere-viewer/settings-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/settings-plugin/index.module.js",
+  "@photo-sphere-viewer/virtual-tour-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/virtual-tour-plugin/index.module.js",
+  "@photo-sphere-viewer/map-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/map-plugin/index.module.js",
+  "@photo-sphere-viewer/plan-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/plan-plugin/index.module.js",
+  "@photo-sphere-viewer/visible-range-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/visible-range-plugin/index.module.js",
+  "@photo-sphere-viewer/autorotate-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/autorotate-plugin/index.module.js",
+  "@photo-sphere-viewer/overlays-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/overlays-plugin/index.module.js",
+  "@photo-sphere-viewer/stereo-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/stereo-plugin/index.module.js",
+  "@photo-sphere-viewer/gyroscope-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/gyroscope-plugin/index.module.js",
+  "@photo-sphere-viewer-lensflare-plugin": "https://cdn.jsdelivr.net/npm/photo-sphere-viewer-lensflare-plugin/dist/index.module.js",
+  "leaflet": "https://cdn.jsdelivr.net/npm/leaflet@1/dist/leaflet-src.esm.js",
+  "@photo-sphere-viewer/equirectangular-tiles-adapter": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/equirectangular-tiles-adapter/index.module.js"
+        }
+    }
+</script>
+
+<script type="module">
+import { Viewer } from '@photo-sphere-viewer/core';
+import { CompassPlugin } from '@photo-sphere-viewer/compass-plugin';
+import { GalleryPlugin } from '@photo-sphere-viewer/gallery-plugin';
+import { MarkersPlugin } from '@photo-sphere-viewer/markers-plugin';
+import { SettingsPlugin } from '@photo-sphere-viewer/settings-plugin';
+import { VirtualTourPlugin } from '@photo-sphere-viewer/virtual-tour-plugin';
+import { MapPlugin } from '@photo-sphere-viewer/map-plugin';
+import { PlanPlugin } from '@photo-sphere-viewer/plan-plugin';
+import { VisibleRangePlugin } from '@photo-sphere-viewer/visible-range-plugin';
+import { AutorotatePlugin } from '@photo-sphere-viewer/autorotate-plugin';
+import { OverlaysPlugin } from '@photo-sphere-viewer/overlays-plugin';
+import { StereoPlugin } from '@photo-sphere-viewer/stereo-plugin';
+import { GyroscopePlugin } from '@photo-sphere-viewer/gyroscope-plugin';
+import { LensflarePlugin } from '@photo-sphere-viewer-lensflare-plugin';
+import { DEFAULTS } from '@photo-sphere-viewer/core';
+import { TileLayer } from 'leaflet';
+import { EquirectangularTilesAdapter } from '@photo-sphere-viewer/equirectangular-tiles-adapter';
+
+  var panel_Id = 'custom-panel';
+
+  let option = false;
+
+  var viewer = new Viewer({
+
+  navbar: [
+    'autorotate',
+    'zoom',
+    'move',
+    'fullscreen',
+
+
+    'stereo',
+    'gyroscope',
+    'caption'
+  ],
+
+    container: 'viewer',
+    adapter: EquirectangularTilesAdapter,
+    panorama: {
+        width: 22560,
+        cols: 32,
+        rows: 16,
+        baseUrl: `PS_Linzone.jpg`,
+        tileUrl: (col, row) => {
+        return `PS_Linzone_${col}_${row}.jpg`;        },
+    },
+    sphereCorrection: { pan: 0 },
+    caption: 'Monte Linzone (1392 metri)',
+    defaultZoomLvl: 10,
+    maxFov: 90,
+    minFov: 5,
+    defaultYaw: 5,
+    defaultPitch: '-10deg',
+
+  keyboard: 'always',
+
+  keyboardActions: { 
+    ...DEFAULTS.keyboardActions,
+  
+  },
+
+  plugins: [
+
+   [CompassPlugin, {
+     hotspots: [
+     { yaw: '0deg' },
+     { yaw: '90deg' },
+     { yaw: '180deg', color: 'yellow' },
+     { yaw: '270deg' },
+     ],
+     size: '80px',
+   }],
+
+   [AutorotatePlugin, {
+     autostartDelay: 3000,
+     autorotateSpeed: 0.12,
+     autorotateZoomLvl: 10,
+     autorotatePitch: 0,
+     autostartOnIdle: false,
+   }],
+
+   
+   [GyroscopePlugin,
+   {absolutePosition: true,  },
+   ],
+    
+   StereoPlugin,
+   ],
+   });
+
+var autorotatePlugin = viewer.getPlugin(AutorotatePlugin);
+var compassPlugin = viewer.getPlugin(CompassPlugin);
+
+
+viewer.startKeyboardControl();
+
+viewer.addEventListener('dblclick', ({ data }) => {
+  viewer.animate({
+  yaw: data.yaw,
+  pitch: data.pitch,
+  zoom: 90,
+  speed: 2000,
+  });
+});
+
+viewer.addEventListener('click', () => autorotatePlugin.stop());
+
+
+</script>
+
+</body>
+</html>
