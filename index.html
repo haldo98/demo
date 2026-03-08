@@ -54,6 +54,7 @@ import { GyroscopePlugin } from '@photo-sphere-viewer/gyroscope-plugin';
 import { DEFAULTS } from '@photo-sphere-viewer/core';
 import { EquirectangularTilesAdapter } from '@photo-sphere-viewer/equirectangular-tiles-adapter';
 
+  var viewer = new Viewer({
 
   navbar: [
     'autorotate',
@@ -142,6 +143,7 @@ viewer.addEventListener('click', () => autorotatePlugin.stop());
 </body>
 
 </html>
+
 
 
 
