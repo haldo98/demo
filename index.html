@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Photo Sphere Monte Linzone</title>
+  <title>Photo Sphere</title>
 
 <!-- for optimal display on high DPI devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core/index.min.css"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/compass-plugin/index.min.css"/>
-
 
 <style>
   html, body {
@@ -74,7 +73,7 @@ import { EquirectangularTilesAdapter } from '@photo-sphere-viewer/equirectangula
         rows: 16,
         baseUrl: `PS_Linzone.jpg`,
         tileUrl: (col, row) => {
-        return `Tiles/PS_linzone_${col}_${row}.jpg`;        },
+        return `Tiles/PS_Linzone_${col}_${row}.jpg`;        },
     },
     sphereCorrection: { pan: 0 },
     caption: 'Monte Linzone (1392 metri)',
@@ -141,11 +140,4 @@ viewer.addEventListener('click', () => autorotatePlugin.stop());
 </script>
 
 </body>
-
 </html>
-
-
-
-
-
-
