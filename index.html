@@ -8,13 +8,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core/index.min.css"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/compass-plugin/index.min.css"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/gallery-plugin/index.min.css"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/markers-plugin/index.min.css"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/settings-plugin/index.min.css"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/virtual-tour-plugin/index.min.css"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/map-plugin/index.min.css"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/plan-plugin/index.min.css"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1/dist/leaflet.css"/>
+
 
 <style>
   html, body {
@@ -43,19 +37,9 @@
   "three": "https://cdn.jsdelivr.net/npm/three/build/three.module.js",
   "@photo-sphere-viewer/core": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core/index.module.js",
   "@photo-sphere-viewer/compass-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/compass-plugin/index.module.js",
-  "@photo-sphere-viewer/gallery-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/gallery-plugin/index.module.js",
-  "@photo-sphere-viewer/markers-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/markers-plugin/index.module.js",
-  "@photo-sphere-viewer/settings-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/settings-plugin/index.module.js",
-  "@photo-sphere-viewer/virtual-tour-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/virtual-tour-plugin/index.module.js",
-  "@photo-sphere-viewer/map-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/map-plugin/index.module.js",
-  "@photo-sphere-viewer/plan-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/plan-plugin/index.module.js",
-  "@photo-sphere-viewer/visible-range-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/visible-range-plugin/index.module.js",
   "@photo-sphere-viewer/autorotate-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/autorotate-plugin/index.module.js",
-  "@photo-sphere-viewer/overlays-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/overlays-plugin/index.module.js",
   "@photo-sphere-viewer/stereo-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/stereo-plugin/index.module.js",
   "@photo-sphere-viewer/gyroscope-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/gyroscope-plugin/index.module.js",
-  "@photo-sphere-viewer-lensflare-plugin": "https://cdn.jsdelivr.net/npm/photo-sphere-viewer-lensflare-plugin/dist/index.module.js",
-  "leaflet": "https://cdn.jsdelivr.net/npm/leaflet@1/dist/leaflet-src.esm.js",
   "@photo-sphere-viewer/equirectangular-tiles-adapter": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/equirectangular-tiles-adapter/index.module.js"
         }
     }
@@ -64,35 +48,18 @@
 <script type="module">
 import { Viewer } from '@photo-sphere-viewer/core';
 import { CompassPlugin } from '@photo-sphere-viewer/compass-plugin';
-import { GalleryPlugin } from '@photo-sphere-viewer/gallery-plugin';
-import { MarkersPlugin } from '@photo-sphere-viewer/markers-plugin';
-import { SettingsPlugin } from '@photo-sphere-viewer/settings-plugin';
-import { VirtualTourPlugin } from '@photo-sphere-viewer/virtual-tour-plugin';
-import { MapPlugin } from '@photo-sphere-viewer/map-plugin';
-import { PlanPlugin } from '@photo-sphere-viewer/plan-plugin';
-import { VisibleRangePlugin } from '@photo-sphere-viewer/visible-range-plugin';
 import { AutorotatePlugin } from '@photo-sphere-viewer/autorotate-plugin';
-import { OverlaysPlugin } from '@photo-sphere-viewer/overlays-plugin';
 import { StereoPlugin } from '@photo-sphere-viewer/stereo-plugin';
 import { GyroscopePlugin } from '@photo-sphere-viewer/gyroscope-plugin';
-import { LensflarePlugin } from '@photo-sphere-viewer-lensflare-plugin';
 import { DEFAULTS } from '@photo-sphere-viewer/core';
-import { TileLayer } from 'leaflet';
 import { EquirectangularTilesAdapter } from '@photo-sphere-viewer/equirectangular-tiles-adapter';
 
-  var panel_Id = 'custom-panel';
-
-  let option = false;
-
-  var viewer = new Viewer({
 
   navbar: [
     'autorotate',
     'zoom',
     'move',
     'fullscreen',
-
-
     'stereo',
     'gyroscope',
     'caption'
@@ -175,6 +142,7 @@ viewer.addEventListener('click', () => autorotatePlugin.stop());
 </body>
 
 </html>
+
 
 
 
